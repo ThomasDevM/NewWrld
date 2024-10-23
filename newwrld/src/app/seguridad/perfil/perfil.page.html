@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+    <ion-title>{{ 'PERFIL' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profile-header">
+    <!-- Imagen de perfil -->
+    <img class="profile-img" [src]="nusuario?.imagen || 'assets/default-profile.png'" alt="Profile Picture">
+    <h2 class="username">{{ nusuario?.nusuario || 'Usuario' }}</h2>
+    <p class="status">{{ 'PROFILE.ONLINE_STATUS' | translate }}</p>
+    <!-- Biografía del usuario -->
+    <p class="bio">{{ nusuario?.biografia || 'Sin biografía disponible' }}</p>
+  </div>
+
+  <ion-button expand="full" (click)="irAEditarPerfil()" color="primary">
+    {{ 'EDITAR_PERFIL' | translate }}
+  </ion-button>
+
+  <ion-button expand="full" color="danger" (click)="cerrarSesion()">
+    {{ 'CERRAR_SESION' | translate }}
+  </ion-button>
+
+</ion-content>
+
+<style>
+  .profile-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ccc;
+    margin-bottom: 15px;
+  }
+
+  .username {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .status {
+    color: #4caf50;
+    margin-bottom: 20px;
+  }
+
+  .bio {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+</style>

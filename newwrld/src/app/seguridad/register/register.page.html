@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'REGISTER.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="logo-container">
+    <ion-img class="logo" src="../../assets/logo/logo.png"></ion-img>
+  </div>
+
+  <div class="contenedor">
+    <div class="register-container">
+      <!-- Formulario de Registro -->
+      <form [formGroup]="registerForm">
+        <!-- Nombre de Usuario -->
+        <ion-item class="login-item">
+          <ion-label position="floating">{{ 'REGISTER.USERNAME_LABEL' | translate }}</ion-label>
+          <ion-input type="text" formControlName="nusuario"></ion-input>
+        </ion-item>
+
+        <!-- Correo Electrónico -->
+        <ion-item class="login-item">
+          <ion-label position="floating">{{ 'REGISTER.EMAIL_LABEL' | translate }}</ion-label>
+          <ion-input type="email" formControlName="correo"></ion-input>
+        </ion-item>
+
+        <!-- Contraseña -->
+        <ion-item class="login-item">
+          <ion-label position="floating">{{ 'REGISTER.PASSWORD_LABEL' | translate }}</ion-label>
+          <ion-input type="password" formControlName="contrasena"></ion-input>
+        </ion-item>
+
+        <!-- Confirmar Contraseña -->
+        <ion-item class="login-item">
+          <ion-label position="floating">{{ 'REGISTER.CONFIRM_PASSWORD_LABEL' | translate }}</ion-label>
+          <ion-input type="password" formControlName="confcontrasena"></ion-input>
+        </ion-item>
+
+        <!-- Botón de Registro -->
+        <div class="centrateboton">
+          <ion-button expand="full" class="login-button" (click)="enviarDatos()">
+            {{ 'REGISTER.REGISTER_BUTTON' | translate }}
+          </ion-button>
+        </div>
+      </form>
+
+      <!-- Enlace para iniciar sesión -->
+      <div class="register-link">
+        <p><a routerLink="/login">{{ 'REGISTER.LOGIN_LINK' | translate }}</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

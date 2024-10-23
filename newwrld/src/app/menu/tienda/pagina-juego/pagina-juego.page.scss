@@ -1,0 +1,61 @@
+ion-header {
+  --background: #0d47a1; /* Cambia el color de fondo si es necesario */
+  margin-bottom: 10px;
+}
+
+ion-title {
+  color: #ffffff; /* Cambia el color del título si es necesario */
+}
+.swiper-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sección de la galería principal */
+.swiper-container-gallery {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Ajusta el alto de la galería principal según tus necesidades */
+  margin-bottom: 10px; /* Espacio entre la galería principal y las miniaturas */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos para las flechas de navegación dentro de la galería */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+/* Sección de miniaturas */
+.swiper-container-thumbs {
+  height: 100px; /* Ajusta la altura de las miniaturas según tus necesidades */
+  width: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

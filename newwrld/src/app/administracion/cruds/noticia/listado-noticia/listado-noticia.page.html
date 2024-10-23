@@ -1,0 +1,33 @@
+<ion-header> 
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de Noticias</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/agregar-noticia">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar 
+    [(ngModel)]="searchText" 
+    (ionInput)="filtrarNoticias()" 
+    placeholder="Buscar noticias...">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item 
+      *ngFor="let noticia of noticiasFiltrados" 
+      (click)="verDetalles(noticia.idNoticia)"
+      style="cursor: pointer;"> <!-- Añadido para cambiar el cursor -->
+      <ion-label>
+        <h2>{{ noticia.titulo }}</h2>
+        <small>Publicado el {{ noticia.fecPubli | date }}</small> <!-- Solo se muestra la fecha -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

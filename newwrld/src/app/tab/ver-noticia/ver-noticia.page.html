@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/noticias"></ion-back-button> <!-- Botón para regresar -->
+    </ion-buttons>
+    <ion-title>{{ (noticia$ | async)?.titulo }}</ion-title> <!-- Título de la noticia en el header -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="noticia$ | async as noticia; else loading">
+    <!-- Mostrar la portada de la noticia -->
+    <ion-img [src]="noticia.portada" alt="Portada de la noticia"></ion-img>
+    
+    <h3>{{ noticia.subtitulo }}</h3>
+    <p>{{ noticia.contenido }}</p>
+    
+    <ion-slides>
+      <!-- Aquí podrías agregar otros elementos de slide si tienes imágenes en la galería -->
+    </ion-slides>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Cargando noticia...</p>
+  </ng-template>
+</ion-content>

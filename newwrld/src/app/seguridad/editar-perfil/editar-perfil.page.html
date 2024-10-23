@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil/{{ idUsuario }}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Imagen central estilo Tinder para el perfil -->
+  <div class="profile-image-container">
+    <img *ngIf="nuevaImagenUrl || imagePreview" [src]="isFileType() ? imagePreview : nuevaImagenUrl" alt="Vista previa del perfil" class="profile-image" />
+    <ion-button fill="clear" (click)="triggerFileInput()" class="edit-button">
+      <ion-icon name="camera"></ion-icon>
+      Cambiar Imagen
+    </ion-button>
+    <input type="file" id="file-input" (change)="onFileSelected($event)" style="display: none;">
+  </div>
+
+  <form (ngSubmit)="guardarCambios()">
+    <!-- Campo de nombre -->
+    <ion-item>
+      <ion-label position="floating">Nuevo Nombre</ion-label>
+      <ion-input [(ngModel)]="nuevoNombre" name="nuevoNombre" required></ion-input>
+    </ion-item>
+
+    <!-- Campo de biografía -->
+    <ion-item>
+      <ion-label position="floating">Nueva Biografía</ion-label>
+      <ion-textarea [(ngModel)]="nuevaBiografia" name="nuevaBiografia" required></ion-textarea>
+    </ion-item>
+
+    <!-- Mensaje de error si existe -->
+    <ion-item *ngIf="msgError" color="danger">
+      <ion-label>{{ msgError }}</ion-label>
+    </ion-item>
+
+    <!-- Botón de guardar al final -->
+    <ion-footer>
+      <ion-button expand="full" type="submit" [disabled]="isLoading">
+        Guardar Cambios
+      </ion-button>
+      <ion-button expand="full" color="danger" (click)="deletePerfil()" [disabled]="isLoading">
+        Eliminar Perfil
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>
+
+<!-- CSS para la nueva estética -->
+<style>
+  .profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+
+  .edit-button {
+    margin-top: 10px;
+  }
+
+  ion-item {
+    margin-bottom: 20px;
+  }
+
+  ion-footer {
+    margin-top: 20px;
+  }
+
+  #file-input {
+    display: none;
+  }
+</style>

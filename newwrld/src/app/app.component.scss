@@ -1,0 +1,10 @@
+/* src/app/app.component.scss */
+
+/* Aplica el color de fondo global al componente principal */
+ion-app {
+    background-color: var(--background-color);
+  }
+  
+  ion-content {
+    --background: var(--background-color);
+  }

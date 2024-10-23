@@ -1,0 +1,67 @@
+.cart-item-card {
+    background-color: #2a475e; /* Fondo oscuro para los items */
+    color: #cccccc; /* Texto gris claro */
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .item-image {
+    width: 100%; /* Imagen ocupa todo el ancho */
+    height: auto; /* Mantiene la proporción */
+    object-fit: cover; /* Asegura que las imágenes horizontales se vean bien */
+    border-radius: 8px;
+  }
+  
+  .total-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #cccccc; /* Texto claro para el total */
+  }
+  
+  .empty-cart-message {
+    text-align: center;
+    margin-top: 50px;
+    color: #b3b3b3; /* Mensaje de carrito vacío en gris */
+  }
+  
+  ion-footer.cart-footer {
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #1b2838; /* Fondo oscuro tipo Steam */
+  }
+  
+  ion-button[color="danger"] {
+    --background: #ff5a5f; /* Fondo rojo peligro */
+    --background-hover: #ff787b; /* Hover más claro */
+  }
+  
+  ion-button[color="success"] {
+    --background: #4caf50; /* Verde éxito */
+    --background-hover: #66bb6a; /* Hover más claro */
+  }
+  
+  ion-header ion-toolbar {
+    --background: #171a21; /* Fondo oscuro del header */
+    --color: #cccccc; /* Texto claro para el header */
+  }
+  
+  ion-back-button {
+    --color: #cccccc; /* Color claro para el botón de regresar */
+  }
+  
+  ion-button {
+    --color: #cccccc; /* Color de texto claro para los botones */
+  }
+  
+  ion-card-title {
+    font-size: 18px;
+    color: #cccccc; /* Color del nombre */
+  }
+  
+  ion-card-subtitle {
+    color: #4caf50; /* Precio en verde */
+    font-size: 16px;
+  }
+  
+  ion-icon {
+    font-size: 28px; /* Aumenta el tamaño del icono del basurero */
+  }

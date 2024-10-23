@@ -1,0 +1,88 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */ 
+ 
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+:root {
+  --ion-color-primary: #DDE6ED;
+  --ion-color-secondary: #098a14;
+  --ion-color-tertiary: #e9c46a;
+
+  
+
+  /* otros colores */
+  --ion-color-light: #ffffff;
+  --ion-color-dark: #5C5470;
+
+  /* Gradiente para el fondo global */
+  --background-gradient: linear-gradient(to bottom, #1b2733, #1b2630 60%, #113031 100%); /* Ajusta los porcentajes según el resultado deseado */
+}
+
+/* Asegúrate de que el color de fondo se aplique a html y body */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--background-gradient);
+  color: var(--ion-color-light); /* Opcional: Cambia el color del texto para que contraste con el fondo */
+}
+
+/* Asegúrate de que el color de fondo se aplique a ion-app y otros elementos clave */
+ion-app {
+  height: 100%;
+  background: var(--background-gradient);
+}
+
+ion-content {
+  --background: var(--background-gradient); /* Aplica el gradiente a ion-content */
+}
+
+ion-toolbar {
+  --background: #27374D; 
+  --color: #ffffff; 
+}
+
+ion-tabs {
+  background-color: #1065aa; /* Cambia este valor al color que desees */
+}
+
+/* Cambiar el color de los íconos de los tabs */
+ion-tab-bar {
+  --background: #102231; /* Cambia el color de fondo de la barra de tabs */
+  --color-selected: rgb(65, 104, 121); /* Color del ícono seleccionado */
+  --color: #cad2d3; /* Color de los íconos no seleccionados */
+}
+  
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+
+@import "@ionic/angular/css/palettes/dark.always.css"

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+    <ion-title>{{ 'FEEDBACK.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ 'FEEDBACK.CARD_TITLE' | translate }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <form (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
+        <ion-item>
+          <ion-label position="floating">{{ 'FEEDBACK.NAME_LABEL' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="feedback.nombre" name="nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">{{ 'FEEDBACK.EMAIL_LABEL' | translate }}</ion-label>
+          <ion-input type="email" [(ngModel)]="feedback.email" name="email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">{{ 'FEEDBACK.COMMENT_LABEL' | translate }}</ion-label>
+          <ion-textarea [(ngModel)]="feedback.comentario" name="comentario" required></ion-textarea>
+        </ion-item>
+
+        <ion-button expand="full" type="submit" [disabled]="!feedbackForm.form.valid">{{ 'FEEDBACK.SUBMIT_BUTTON' | translate }}</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

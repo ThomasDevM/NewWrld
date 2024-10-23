@@ -1,0 +1,83 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo-container {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+    background: linear-gradient(180deg, #1a1a1a 60%, #f5f5f5 100%);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .logo {
+    width: 120px;
+    height: 120px;
+    margin-left:  35%;
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+  }
+ 
+
+  .login-item {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .centrateboton {
+    width: 100%;
+  }
+  
+  .login-button {
+    --background: #000000fd;
+    --border-radius: 20px;  
+    color: #f5f5f5;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .register-link {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: right;
+    margin-right: 40%;
+    
+  }
+  
+  .register-link a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .forgot-password {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+  
+  .forgot-password a {
+    color: #080808;
+    text-decoration: none;
+  }
+  

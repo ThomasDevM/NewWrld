@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- Botón de regreso -->
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles del Juego</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar el formulario solo si 'juego' tiene datos -->
+  <form *ngIf="juego" (ngSubmit)="guardarCambios()">
+    <!-- Campo para el nombre del juego -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="juego.nombre" name="nombre" required></ion-input>
+    </ion-item>
+    
+    <!-- Campo para la descripción del juego -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="juego.descripcion" name="descripcion" required></ion-textarea>
+    </ion-item>
+    
+    <!-- Campo para el precio del juego -->
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="juego.precio" name="precio" required></ion-input>
+    </ion-item>
+    
+    <!-- Campo para seleccionar categorías -->
+    <ion-item>
+      <ion-label>Categorías</ion-label>
+      <ion-select [(ngModel)]="juego.categorias" name="categorias" multiple="true" placeholder="Selecciona las categorías">
+        <ion-select-option *ngFor="let categoria of categoriasDisponibles" [value]="categoria.id">
+          {{ categoria.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Botón para guardar los cambios -->
+    <ion-button expand="full" type="submit" [disabled]="!juego.nombre || !juego.descripcion || !juego.precio || !juego.categorias.length">
+      Guardar Cambios
+    </ion-button>
+
+    <!-- Botón para eliminar el juego -->
+    <ion-button expand="full" color="danger" (click)="eliminarJuego()" [disabled]="isLoading">
+      Eliminar Juego
+    </ion-button>
+  </form>
+
+  <!-- Mensaje de carga o si no se encuentra el juego -->
+  <div *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Mensaje de éxito o error -->
+  <div *ngIf="isSuccess">
+    <ion-toast [message]="'Juego actualizado exitosamente'"
+               [duration]="2000"
+               [color]="'success'"
+               position="bottom">
+    </ion-toast>
+  </div>
+
+  <div *ngIf="isError">
+    <ion-toast [message]="'Error al actualizar el juego'"
+               [duration]="2000"
+               [color]="'danger'"
+               position="bottom">
+    </ion-toast>
+  </div>
+
+  <!-- Mensaje si no se encuentra el juego -->
+  <div *ngIf="!juego && !isLoading">
+    <p>No se encontraron detalles del juego...</p>
+  </div>
+</ion-content>

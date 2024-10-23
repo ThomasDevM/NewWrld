@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalles de la Categoría</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Detalles de la Categoría</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Mostrar el formulario solo si 'categoria' tiene datos -->
+  <form *ngIf="categoria" (ngSubmit)="guardarCambios()">
+    <!-- Campo para el nombre de la categoría -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="categoria.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <!-- Botón para guardar los cambios -->
+    <ion-button expand="full" type="submit" [disabled]="!categoria.nombre">
+      Guardar Cambios
+    </ion-button>
+
+    <!-- Botón para eliminar la categoría -->
+    <ion-button expand="full" color="danger" (click)="eliminarCategoria()" [disabled]="isLoading">
+      Eliminar Categoría
+    </ion-button>
+  </form>
+
+  <!-- Mensaje de carga o si no se encuentra la categoría -->
+  <div *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Mensaje de éxito o error -->
+  <div *ngIf="isSuccess">
+    <ion-toast [message]="'Categoría actualizada exitosamente'"
+               [duration]="2000"
+               [color]="'success'"
+               position="bottom">
+    </ion-toast>
+  </div>
+
+  <div *ngIf="isError">
+    <ion-toast [message]="'Error al actualizar la categoría'"
+               [duration]="2000"
+               [color]="'danger'"
+               position="bottom">
+    </ion-toast>
+  </div>
+
+  <!-- Mensaje si no se encuentra la categoría -->
+  <div *ngIf="!categoria && !isLoading">
+    <p>No se encontraron detalles de la categoría...</p>
+  </div>
+</ion-content>

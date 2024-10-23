@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Botón de regresar a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Listar Categorías</ion-title>
+
+    <!-- Símbolo de más a la derecha para ir al CRUD -->
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/crud-categoria']">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Barra de búsqueda que sigue al usuario -->
+  <ion-toolbar class="sticky-toolbar">
+    <ion-searchbar [(ngModel)]="searchText" placeholder="Buscar por nombre o ID..." debounce="500" (ionInput)="filtrarCategoria()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de categorías -->
+  <ion-list>
+    <ion-item *ngFor="let categoria of categoriaFiltrados"> <!-- Cambié 'categorias' por 'categoriaFiltrados' -->
+      <ion-label>{{ categoria.nombre }}</ion-label>
+      <ion-button [routerLink]="['/detalle-categoria', categoria.idCategoria]">Ver Detalle</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

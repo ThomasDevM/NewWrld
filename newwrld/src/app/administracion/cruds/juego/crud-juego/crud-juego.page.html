@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/listar-juego"></ion-back-button>      
+      </ion-buttons>
+      <ion-title>Agregar Juego</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form (ngSubmit)="submitForm()">
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre del Juego</ion-label>
+      <ion-input type="text" [(ngModel)]="registro.nombre" name="txNombre"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="registro.descripcion" name="txDescripcion"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="registro.precio" name="txPrecio"></ion-input>
+    </ion-item>
+  
+    <ion-item lines="full">
+      <ion-label>Categorías</ion-label>
+      <ion-select [(ngModel)]="registro.categorias" multiple="true" interface="popover" name="categoriaSelect">
+        <ion-select-option *ngFor="let categoria of categoriasDisponibles" [value]="categoria">
+          {{ categoria.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Input para la portada -->
+     <ion-label>
+      Portada del juego
+     </ion-label>
+    <input type="file" (change)="onPortadaSelected($event)" accept="image/*" />
+    <img *ngIf="portadaPreview" [src]="portadaPreview" alt="Portada seleccionada" />
+
+    <!-- Input para las imágenes de la galería -->
+     <ion-label>
+      Galeria de fotos del juego
+     </ion-label>
+    <input type="file" (change)="onGaleriaSelected($event)" accept="image/*" multiple />
+    <div *ngFor="let img of galeriaPreview">
+      <img [src]="img" alt="Imagen de la galería" />
+    </div>
+  
+    <!-- Mensaje de error -->
+    <ion-text color="danger" *ngIf="msgError">
+      <p>{{ msgError }}</p>
+    </ion-text>
+  
+    <!-- Spinner de carga -->
+    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+  
+    <!-- Mensaje de éxito -->
+    <ion-text color="success" *ngIf="isSuccess">
+      <p>Juego agregado exitosamente.</p>
+    </ion-text>
+  
+    <ion-button expand="full" type="submit">Agregar Juego</ion-button>
+    <ion-button expand="full" (click)="limpiar()">Limpiar</ion-button>
+  </form>
+  </ion-content>

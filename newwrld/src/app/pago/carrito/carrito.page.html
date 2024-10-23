@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar style="--background: #171a21;"> <!-- Cambié el color de fondo aquí -->
+    <ion-title style="color: #cccccc;">{{ 'CARRITO' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/" style="color: #cccccc;"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearCart()" color="danger" style="--color: #ff5a5f;">
+        {{ 'LIMPIAR' | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Si el carrito está vacío -->
+  <div *ngIf="cart.length === 0" class="empty-cart-message">
+    <ion-icon name="cart-outline" style="font-size: 80px; color: #b3b3b3;"></ion-icon>
+    <p style="color: #b3b3b3;">{{ 'TU_CARRITO_ESTA_VACIO' | translate }}</p>
+  </div>
+
+  <!-- Si hay productos en el carrito -->
+  <ion-card *ngFor="let item of cart; let i = index" class="cart-item-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <!-- Imagen del producto (centrada y ajustada para imágenes horizontales) -->
+          <ion-img [src]="getItemImage(i)" class="item-image"></ion-img>
+        </ion-col>
+        <ion-col size="12" class="ion-text-center">
+          <!-- Nombre del producto -->
+          <ion-card-title style="font-size: 18px; color: #cccccc;">
+            {{ item.nombre }}
+          </ion-card-title>
+          <!-- Precio del producto (en verde) -->
+          <ion-card-subtitle style="color: #4caf50; font-size: 16px;">
+            {{ item.precio | currency:'CLP $':true:'1.0-0' }}
+          </ion-card-subtitle>
+        </ion-col>
+        <ion-col size="12" class="ion-text-center">
+          <!-- Botón de eliminar con icono de basurero más grande -->
+          <ion-button color="danger" (click)="removeFromCart(i)" size="small" fill="clear">
+            <ion-icon slot="icon-only" name="trash-outline" style="font-size: 28px;"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
+
+<!-- Footer fijo con el total y botón de pago -->
+<ion-footer class="ion-no-border cart-footer" style="background-color: #1b2838;">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <h3 class="total-text" style="color: #cccccc;">{{ 'TOTAL' | translate }}: {{ getTotalPrice() | currency:'CLP $':true:'1.0-0' }}</h3>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right">
+        <ion-button color="success" [disabled]="cart.length === 0" [routerLink]="['/realizacion-pago']" expand="block">
+          {{ 'PROCEDER_PAGO' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

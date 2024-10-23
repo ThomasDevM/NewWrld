@@ -1,0 +1,120 @@
+ion-content {
+    padding: 20px;
+  }
+  
+  form {
+    margin: 20px 0;
+  }
+  
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-start: 10px;
+    --inner-padding-end: 10px;
+  }
+  
+  ion-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  ion-input {
+    font-size: 14px;
+    padding-left: 12px;
+  }
+  
+  ion-button {
+    --border-radius: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  ion-button[expand="block"] {
+    margin-top: 20px;
+  }
+  
+  ion-button[color="primary"] {
+    --background: #3880ff;
+    --background-hover: #3171e0;
+    --background-activated: #2565d0;
+    --color: white;
+  }
+  
+  ion-button[color="primary"]:disabled {
+    --background: #8c8c8c;
+    --color: #ffffff;
+  }
+  
+  ion-button[color="light"] {
+    --background: #f4f5f8;
+    --background-hover: #e3e3e3;
+    --color: #333;
+  }
+  
+  ion-spinner {
+    margin-right: 10px;
+  }
+  
+  ion-label.ion-text-wrap {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  ion-label[color="success"] {
+    color: #28a745;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  ion-label[color="danger"] {
+    color: #e74c3c;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  
+  ion-row.ion-justify-content-center {
+    justify-content: center;
+  }
+  
+  ion-col {
+    display: flex;
+    justify-content: center;
+  }
+  
+  ion-row.ion-padding-vertical {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  /* Nuevos estilos para el contenedor de carga (loading) y el mensaje de éxito */
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Centra verticalmente */
+  }
+  
+  .success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Centra verticalmente */
+  }
+  
+  ion-spinner {
+    margin-bottom: 15px;
+    --color: #3880ff; /* Color azul para el spinner */
+  }
+  
+  ion-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745; /* Color verde para el mensaje de éxito */
+  }
+  
+  .ion-text-center {
+    text-align: center;
+  }

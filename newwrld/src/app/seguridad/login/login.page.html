@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'LOGIN.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="logo-container">
+    <ion-img class="logo" src="../../assets/logo/logo.png"></ion-img>
+  </div>
+
+  <div class="contenedor">
+    <div class="login-container">
+      <!-- Correo Electrónico -->
+      <ion-item class="login-item">
+        <ion-label id="correo" position="floating">{{ 'LOGIN.EMAIL_LABEL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="correo"></ion-input>
+      </ion-item>
+
+      <!-- Contraseña -->
+      <ion-item class="login-item">
+        <ion-label position="floating">{{ 'LOGIN.PASSWORD_LABEL' | translate }}</ion-label>
+        <ion-input id="contrasena" type="password" [(ngModel)]="contrasena"></ion-input>
+      </ion-item>
+
+      <!-- Botón de Iniciar Sesión -->
+      <div class="centrateboton">
+        <ion-button expand="full" class="login-button" (click)="iniciarSesion()">
+          {{ 'LOGIN.LOGIN_BUTTON' | translate }}
+        </ion-button>
+      </div>
+
+      <!-- Botón de Iniciar Sesión con Google -->
+      <div class="centrateboton">
+        <ion-button expand="full" class="google-login-button" (click)="loginWithGoogle()">
+          Iniciar sesión con Google
+        </ion-button>
+      </div>
+
+      <!-- Enlace para Registrarse -->
+      <div class="register-link">
+        <p>{{ 'LOGIN.REGISTER_PROMPT' | translate }} <a [routerLink]="['/register']">{{ 'LOGIN.REGISTER_LINK' | translate }}</a></p>
+      </div>
+
+      <!-- Enlace de Recuperación de Contraseña -->
+      <ion-text class="forgot-password">
+        <a [routerLink]="['/olvidala']">{{ 'LOGIN.FORGOT_PASSWORD_LINK' | translate }}</a>
+      </ion-text>
+    </div>
+  </div>
+</ion-content>

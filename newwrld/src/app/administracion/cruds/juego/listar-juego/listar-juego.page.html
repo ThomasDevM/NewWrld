@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listar Juegos</ion-title>
+    <!-- Botón de agregar juego en el header -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/crud-juego">
+        <ion-icon name="add"></ion-icon> <!-- Icono + -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- Barra de búsqueda que sigue al usuario -->
+  <ion-toolbar class="sticky-toolbar">
+    <ion-searchbar [(ngModel)]="searchText" placeholder="Buscar por nombre o ID..." debounce="500" (ionInput)="filtrarJuegos()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/crud-juego">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- Lista de juegos -->
+ 
+
+  <ion-list>
+    <ion-item *ngFor="let game of games" (click)="navigateA(game)"> 
+      <ion-label>
+        <h2>{{ game.nombre | titlecase }}</h2>
+        <p>{{ game.descripcion }}</p>
+        <p>{{ game.id }}</p>
+        <!-- Mostrar el precio con el formato deseado -->
+        <h3>{{ game.precio | currency:'CLP $':true:'1.0-0' }}</h3>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

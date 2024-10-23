@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de Desarrolladoras</ion-title>
+    <!-- Botón de agregar en el header -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/agregar-desarro">
+        <ion-icon name="add"></ion-icon> <!-- Icono + -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar [(ngModel)]="searchText" (ionInput)="filtrarDesarros()" placeholder="Buscar desarrolladora..."></ion-searchbar>
+
+  <!-- Lista de desarrolladoras -->
+  <ion-list>
+    <ion-item *ngFor="let desarro of desarrosFiltrados" (click)="navegarDetalle(desarro.idDesarrolladora)">
+      <!-- Logo circular -->
+      <ion-avatar slot="start">
+        <img *ngIf="desarro.logo" [src]="desarro.logo" alt="Logo desarrolladora" class="logo-circle" />
+      </ion-avatar>
+      <!-- Nombre de la desarrolladora -->
+      <ion-label>
+        <h2>{{ desarro.nombre }}</h2>
+        <p>{{ desarro.descripcion }}</p>  <!-- Descripción también mostrada -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

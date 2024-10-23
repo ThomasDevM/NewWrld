@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'LISTA_DESEOS.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ 'LISTA_DESEOS.TITLE' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Barra de búsqueda -->
+  <ion-searchbar 
+    placeholder="{{ 'BUSCAR_JUEGO' | translate }}" 
+    (ionInput)="filterWishlist($event)"
+    debounce="500">
+  </ion-searchbar>
+
+  <!-- Lista filtrada de deseos -->
+  <ion-list *ngIf="filteredWishlist.length > 0; else emptyList">
+    <ion-item *ngFor="let game of filteredWishlist; let i = index">
+      <ion-thumbnail slot="start">
+        <img [src]="game.imagen" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ game.nombre }}</h2>
+        <p>{{ game.precio | currency:'CLP $':true:'1.0-0' }}</p>
+      </ion-label>
+      <ion-button (click)="removeFromWishlist(i)" fill="clear" color="danger">
+        {{ 'REMOVER' | translate }}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay juegos en la lista de deseos -->
+  <ng-template #emptyList>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'LISTA_DESEOS.EMPTY_TITLE' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ 'LISTA_DESEOS.EMPTY_MESSAGE' | translate }}
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

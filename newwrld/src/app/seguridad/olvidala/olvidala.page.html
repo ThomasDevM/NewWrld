@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'FORGOT_PASSWORD.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="/"></ion-back-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="logo-container">
+    <ion-img class="logo" src="../../assets/logo/logo.png"></ion-img>
+  </div>
+    
+  <div class="contenedor">
+    <div class="forgot-password-container">
+      <ion-item class="login-item">
+        <ion-label id="correo" position="floating">{{ 'FORGOT_PASSWORD.EMAIL_LABEL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="correo"></ion-input>
+      </ion-item>
+
+      <div class="centrateboton">
+        <ion-button expand="full" class="login-button" (click)="enviarSolicitud()">
+          {{ 'FORGOT_PASSWORD.SEND_REQUEST_BUTTON' | translate }}
+        </ion-button>
+      </div>
+
+      <div class="forgot-password-link">
+        <p><a href="../login">{{ 'FORGOT_PASSWORD.REMEMBER_PASSWORD_LINK' | translate }}</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

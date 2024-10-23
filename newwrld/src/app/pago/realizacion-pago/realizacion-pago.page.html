@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PAGO</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="{{ 'ATRAS' | translate }}" defaultHref="javascript:history.back()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form action="/submit-payment" method="post">
+    <ion-item>
+      <ion-label position="floating">Card Number</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Expiry Date</ion-label>
+      <ion-input type="text" placeholder="MM/YY" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">CVV</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cardholder Name</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+    <div>
+      Total:
+    </div>
+    <ion-button expand="full" type="submit">Submit Payment</ion-button>
+  </form>
+</ion-content>

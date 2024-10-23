@@ -1,0 +1,32 @@
+/* Estilo para las opciones adicionales */
+.small-option {
+    --ion-item-padding-start: 0;
+    --ion-item-padding-end: 0;
+    --ion-item-padding-top: 0;
+    --ion-item-padding-bottom: 0;
+    --background: transparent;
+    border: none; /* Elimina el borde */
+    box-shadow: none; /* Elimina la sombra, si existe */
+    font-size: 12px; /* Tamaño de texto más pequeño */
+  }
+  
+  .small-option ion-label {
+    color: gray; /* Color gris para el texto */
+  }
+  
+  .small-option ion-icon {
+    font-size: 18px; /* Tamaño de icono más pequeño, ajusta si es necesario */
+  }
+
+  ion-footer {
+    background-color: #333; /* Color de fondo del footer */
+    color: white; /* Color del texto del footer */
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  ion-footer ion-toolbar {
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  

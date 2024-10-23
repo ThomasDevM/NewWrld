@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Regalo Misterioso</ion-title>
+    <!-- Icono de información para explicar el regalo -->
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarInfo()">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Información del regalo misterioso -->
+  <div *ngIf="mostrarExplicacion" class="informacion-regalo">
+    <p>Este es un regalo misterioso que te ofrece descuentos en categorías de juegos. ¡Abre el regalo y descubre tu oferta!</p>
+  </div>
+
+  <div class="regalo-container">
+    <!-- Mensaje de celebración, aparece sobre el regalo -->
+    <div *ngIf="mensajeVisible" class="mensaje-ganador-contenedor">
+      <p class="mensaje-ganador">¡Felicidades! Ganaste: {{opcionGanadora}}</p>
+    </div>
+
+    <!-- Caja de regalo con animación -->
+    <div class="regalo" [class.temblar]="temblando">
+      <div class="regalo-caja">
+        <div class="cinta-horizontal"></div>
+        <div class="cinta-vertical"></div>
+        <div class="regalo-cuerpo"></div>
+      </div>
+    </div>
+
+    <!-- Botón para abrir el regalo -->
+    <ion-button expand="full" *ngIf="!regaloAbierto" (click)="abrirRegalo()">Abrir Regalo</ion-button>
+
+    <!-- Botón de bloqueo y contador (automáticamente se muestra después de abrir el regalo) -->
+    <ion-button expand="full" *ngIf="mostrarBotonBloqueo" color="danger">Bloquear por 24 horas</ion-button>
+
+    <!-- Contador de 24 horas -->
+    <div *ngIf="contadorVisible">
+      <p>Vuelve a jugar en: {{ tiempoRestante | date:'HH:mm:ss' }}</p>
+    </div>
+  </div>
+</ion-content>

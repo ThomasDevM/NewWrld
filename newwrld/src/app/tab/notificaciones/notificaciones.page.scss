@@ -1,0 +1,74 @@
+/* Estilos generales del modal */
+ion-modal .modal-content {
+  border-radius: 20px; /* Redondear las esquinas del modal */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Añadir una sombra al modal */
+  padding: 20px;
+}
+
+ion-toolbar {
+  --color: #fff; /* Mantener el color del texto en la barra de herramientas */
+}
+
+ion-title {
+  font-size: 1.4em; /* Tamaño del texto del título */
+}
+
+/* Estilos específicos para el contenido del regalo */
+.gift-content {
+  text-align: center; /* Centrar el contenido del regalo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gift-image {
+  width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+p {
+  font-size: 1rem;
+  color: #666; /* Cambia el color del texto según sea necesario */
+}
+
+/* Estilos para tarjetas */
+ion-card {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+ion-card-header {
+  border-radius: 10px 10px 0 0; /* Bordes redondeados superiores */
+}
+
+/* Estilos para badges */
+ion-badge {
+  border-radius: 12px; /* Redondear las esquinas */
+  padding: 5px 10px; /* Aumentar el tamaño */
+}
+
+/* Estilos para elementos de la lista y botones */
+ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin: 8px 0; /* Espaciado entre ítems */
+}
+
+ion-textarea {
+  --padding: 10px;
+}
+
+ion-button {
+  --margin-top: 10px;
+}
+
+

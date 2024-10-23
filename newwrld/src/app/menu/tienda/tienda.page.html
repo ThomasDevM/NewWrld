@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <!-- Logo en la parte superior -->
+  <ion-toolbar style="background-color: #121212; color: #d3d3d3; justify-content: center;">
+    <ion-title>
+      <img src="../../../assets/logo/logo2.png" alt="" style="height: 35px; margin-left: 56px;">
+    </ion-title>
+  </ion-toolbar>
+
+  <!-- Barra con carrito, buscador y perfil -->
+  <ion-toolbar style="background-color: #121212; color: #d3d3d3;">
+    <!-- Ícono del carrito a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/carrito']">
+        <ion-badge color="danger" *ngIf="itemCount > 0">{{ itemCount }}</ion-badge>
+        <ion-icon name="cart-outline" style="color: #ffffff; font-size: 25px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Buscador más corto y alineado a la derecha -->
+    <ion-searchbar style="width: 255px; margin-right: auto;" 
+      placeholder="{{ 'BUSCAR_JUEGOS' | translate }}"
+      [(ngModel)]="searchQuery"
+      (ionInput)="searchJuegos()">
+    </ion-searchbar>
+
+    <!-- Ícono de usuario agrandado a la derecha -->
+    <ion-buttons slot="end">
+      <ion-button (click)="alPerfil()" [disabled]="!idUsuario">
+        <!-- Mostrar imagen de perfil o icono por defecto -->
+        <ion-icon *ngIf="!imagenPerfil" name="person-circle-outline" style="color: #ffffff; font-size: 40px;"></ion-icon>
+        <img *ngIf="imagenPerfil" [src]="imagenPerfil" style="width: 40px; height: 40px; border-radius: 50%;">
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar> 
+
+  <!-- Menú con Lista de Deseos y Cartera -->
+  <ion-toolbar style="background-color: #121212; color: #d3d3d3;">
+    <!-- Menú desplegable -->
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-label>{{ 'MENU' | translate }}</ion-label>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Lista de Deseos -->
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/lista-deseo']">
+        <ion-icon name="heart-outline" style="color: #ffffff;"></ion-icon>
+        <ion-label>{{ 'LISTA_DE_DESEOS' | translate }}</ion-label>
+      </ion-button>
+
+      <!-- Cartera -->
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="['/cartera']">
+        <ion-icon name="wallet-outline" style="color: #ffffff;"></ion-icon>
+        <ion-label>{{ 'CARTERA' | translate }}</ion-label>
+      </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Menú desplegable con Lo más vendido y Categoría -->
+  <ion-list *ngIf="menuOpen">
+    <ion-item (click)="selectOption('Lo más vendido')">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+      <ion-label>{{ 'LO_MAS_VENDIDO' | translate }}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="selectOption('Categoría')">
+      <ion-icon name="grid-outline" slot="start"></ion-icon>
+      <ion-label>{{ 'CATEGORIA' | translate }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Sección de Recomendaciones -->
+  <ion-title size="large" style="margin-top: 3%; margin-bottom: 3%; text-align: center; color: #ffffff;">
+    {{ 'RECOMENDACION' | translate }}
+  </ion-title>
+
+  <!-- Tarjetas de juegos -->
+  <ion-card *ngFor="let juego of filteredJuegos" style="background-color: #1e1e1e; border-radius: 10px; margin-bottom: 20px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);" (click)="navigateA(juego)">
+    <ion-img [src]="juego.imagen"></ion-img>
+    <ion-card-header>
+      <ion-card-title style="color: #ffffff;">
+        {{ juego.precio | currency:'CLP $':true:'1.0-0' }}
+      </ion-card-title>
+      <ion-card-subtitle style="color: #b3b3b3;">
+        {{ juego.nombre }}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="color: #d3d3d3;">
+      {{ juego.categorias.nombre }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

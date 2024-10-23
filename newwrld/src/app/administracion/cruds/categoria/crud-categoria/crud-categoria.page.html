@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+
+      <ion-title>Agregar Categoría</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <!-- Campo para el nombre de la categoria-->
+        <ion-item lines="full">
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" name="txNombre" [(ngModel)]="registro.nombre" required></ion-input>
+        </ion-item>
+
+        <!-- Botones para guardar y limpiar -->
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="grabar()" color="primary" expand="block">Guardar</ion-button>
+                <br><br><br>
+                <ion-button (click)="limpiar()" color="light" expand="block">Limpiar</ion-button>
+            </ion-col>
+        </ion-row>
+
+        <!-- Spinner y mensaje de éxito -->
+        <div *ngIf="isLoading" class="loading-container">
+            <ion-spinner name="circles"></ion-spinner>
+            <ion-label>Cargando...</ion-label>
+        </div>
+
+        <div *ngIf="isSuccess" class="success-container">
+            <ion-label class="ion-text-center ion-text-color-success">¡Categoria agregada correctamente!</ion-label>
+        </div>
+        
+        <!-- Mensaje de error -->
+        <ion-row>
+            <ion-label class="ion-text-wrap" position="floating" color="danger">{{ msgError }}</ion-label>
+        </ion-row>
+    </form>
+</ion-content>

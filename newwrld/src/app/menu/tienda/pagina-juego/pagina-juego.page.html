@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tienda"></ion-back-button>      
+    </ion-buttons>
+    <ion-title> <h2 ><p style="text-align: center;   font-weight: bold;">{{ gameData.nombre }}</p></h2></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+ <!-- imagen eejmplo dejarlo comentado pls 
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img [src]="gameData.imageUrl" alt="{{ gameData.subtitle }}" style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);">
+     </div>-->
+
+     
+  <!-- div galeria -->
+  <div class="swiper-container-wrapper">
+      
+    <div class="swiper-container-gallery">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let slide of slides">
+          <img [src]="slide.img" style="width: 100%; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);">          
+        </div>
+      </div>
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Navigation -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Contenedor de miniaturas -->
+    <div class="swiper-container-thumbs">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let slide of slides">
+          <img [src]="slide.img" style="width: 100%; border-radius: 5px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);">
+        </div>
+      </div>
+    </div> 
+  </div>
+  <!-- fin galeria -->
+
+  
+
+  <ion-card style="padding-top: 10px;">
+    <ion-card-header>
+      <ion-card-title><h2 style="font-size: 24px; margin: 10px 0; font-weight: bold; ">{{ gameData.nombre }}</h2></ion-card-title>
+      <p style="color: #b3b3b3; margin-bottom: 10px;">
+        Categorías: 
+        <span *ngFor="let categoria of gameData.categorias; let i = index">
+          {{ categoria.nombre }}<span *ngIf="i < gameData.categorias.length - 1">, </span>
+        </span>
+      </p>
+      
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p style="font-size: 20px; margin: 10px 0; font-weight: bold;">{{ gameData.precio |currency:'CLP $':true:'1.0-0' }}</p>
+      {{ gameData.descripcion || "Aquí va la descripción del juego. Añade detalles interesantes y características destacadas para que los usuarios se sientan atraídos a jugarlo." }}
+      
+    </ion-card-content>
+  
+    <ion-button (click)="addToCart(gameData)"  id="addCarrito"  fill="clear">Agregar al Carrito</ion-button>
+    <ion-toast
+      trigger="addCarrito"
+      position="top"
+      positionAnchor="header"
+      message="Agregado al carrito"
+      duration="2000"
+      icon="checkmark-outline"
+      color="success"
+      ></ion-toast>
+
+
+   
+
+
+
+      <button (click)="addToWishlist(gameData)" class="wishlist-button">
+        Añadir a la lista de deseos
+      </button>
+      <ion-toast
+        trigger="addWishlist"
+        position="top"
+        positionAnchor="header"
+        message="Agregado a la lista de deseos"
+        duration="2000"
+        icon="heart-outline"
+        color="tertiary"
+      ></ion-toast>
+  </ion-card>
+  
+
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tienda"></ion-back-button>      
+    </ion-buttons>
+    <ion-title>Cartera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Cartera</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="12" size-md="6">
+        <ion-card class="cartera-card">
+          <ion-card-header>
+            <ion-card-title class="saldo-titulo">Saldo actual de la Cartera</ion-card-title>
+            <div class="saldo-actual">CLP$ {{ fondosActuales }}</div>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-button expand="full" fill="solid" color="dark">
+              Ver los detalles de mi cuenta
+            </ion-button>
+            <ion-button expand="full" fill="solid" color="dark">
+              Canjear una tarjeta regalo o un código
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

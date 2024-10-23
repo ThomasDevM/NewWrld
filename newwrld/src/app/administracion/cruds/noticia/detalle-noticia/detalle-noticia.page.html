@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listado-noticia"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de Noticia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Imagen central para la portada -->
+  <div class="image-container">
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Vista previa de la portada" class="image-preview" />
+    <ion-button fill="clear" (click)="triggerFileInput()" class="change-button">
+      <ion-icon name="camera"></ion-icon>
+      Cambiar Portada
+    </ion-button>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden id="file-input" />
+  </div>
+
+  <!-- Galería de imágenes -->
+  <div class="gallery-container">
+    <h3>Galería de Imágenes ({{ noticia.galeria?.length || 0 }} seleccionadas)</h3>
+    <div class="gallery">
+      <ng-container *ngFor="let img of noticia.galeria; let i = index">
+        <div class="gallery-image-container">
+          <img [src]="img" alt="Imagen de la galería" class="gallery-image" />
+          <ion-button fill="clear" (click)="removeImage(i)" class="remove-button">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </div>
+      </ng-container>
+    </div>
+    <ion-button fill="clear" (click)="triggerGalleryInput()" class="change-button">
+      <ion-icon name="add"></ion-icon>
+      Agregar Imagen a la Galería
+    </ion-button>
+    <input type="file" (change)="onGalleryFileSelected($event)" accept="image/*" hidden id="gallery-input" multiple />
+  </div>
+
+  <form (ngSubmit)="submitForm()">
+    <!-- Campo de título -->
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [(ngModel)]="noticia.titulo" name="titulo" required></ion-input>
+    </ion-item>
+
+    <!-- Campo de subtítulo -->
+    <ion-item>
+      <ion-label position="floating">Subtítulo</ion-label>
+      <ion-input [(ngModel)]="noticia.subtitulo" name="subtitulo" required></ion-input>
+    </ion-item>
+
+    <!-- Campo de contenido -->
+    <ion-item>
+      <ion-label position="floating">Contenido</ion-label>
+      <ion-textarea [(ngModel)]="noticia.contenido" name="contenido" required></ion-textarea>
+    </ion-item>
+
+    <!-- Mensaje de error si existe -->
+    <ion-item *ngIf="msgError" color="danger">
+      <ion-label>{{ msgError }}</ion-label>
+    </ion-item>
+
+    <!-- Botones para guardar cambios y eliminar -->
+    <ion-footer>
+      <ion-button expand="full" type="submit" [disabled]="isLoading">
+        Guardar Cambios
+      </ion-button>
+      <ion-button expand="full" (click)="deleteNoticia()" color="danger" [disabled]="isLoading">
+        Eliminar Noticia
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

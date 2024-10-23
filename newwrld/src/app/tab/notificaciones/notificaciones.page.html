@@ -1,0 +1,171 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Notificaciones
+      <ion-badge color="primary" *ngIf="messages.length > 0">{{ messages.length }}</ion-badge>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{'NOTIFICACIONES' | translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="news-container">
+
+    <ion-card button (click)="openDetails('card1')">
+      <ion-card-header>
+        <ion-card-subtitle>Publicado hoy a las 06:11 p.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/Batmetal20.JPG" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡BatMetal20 te escribió!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              ¿Está su phasmo fuera?
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card button (click)="openDetails('card2')">
+      <ion-card-header>
+        <ion-card-subtitle>Publicado hoy a las 08:45 a.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/konan.JPG" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡konan te escribió!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              goti
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card button (click)="openDetails('card3')">
+      <ion-card-header>
+        <ion-card-subtitle>Hace una semana a las 12:45 a.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/Sheeze.jpg" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡Sheeze te escribió!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              envía la IP bro
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card button (click)="openDetails('card4')">
+      <ion-card-header>
+        <ion-card-subtitle>Agosto a las 10:30 p.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/DEATHMASTER43.jpg" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡DEATHMASTER43 te regaló un juego!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              Haz clic para ver el juego.
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card button (click)="openDetails('card5')">
+      <ion-card-header>
+        <ion-card-subtitle>Agosto a las 11:00 a.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/Fidier.jpg" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡Fidier te escribió!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              hola
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card button (click)="openDetails('card6')">
+      <ion-card-header>
+        <ion-card-subtitle>Julio a las 11:15 a.m</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img alt="Avatar" src="../../../assets/icon/Zeus.jpg" />
+          </ion-avatar>
+          <ion-label>
+            <h2>¡Zeus te escribió!</h2>
+            <ion-note color="medium" class="ion-text-wrap">
+              ¿cuándo pagan?
+            </ion-note>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <ion-modal #modal>
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>{{ modalTitle }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="primary" (click)="cerrar()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-list>
+          <ion-item *ngIf="!isGiftAccepted">
+            <div [innerHTML]="modalContent"></div>
+          </ion-item>
+
+          <ion-item *ngIf="isGiftAccepted" class="gift-content">
+            <div>
+              <img src="assets/img/regalo.png" alt="Regalo" class="gift-image">
+              <h2>Regalo Recibido</h2>
+              <p>Has recibido un regalo especial.</p>
+            </div>
+          </ion-item>
+
+          <ion-item *ngIf="showReplyBox">
+            <ion-textarea placeholder="Escribe tu respuesta aquí..." [(ngModel)]="replyMessage"></ion-textarea>
+          </ion-item>
+          <ion-item *ngIf="showReplyBox">
+            <ion-button expand="full" color="primary" (click)="sendReply()">Enviar Respuesta</ion-button>
+          </ion-item>
+
+          <ion-item *ngIf="modalTitle === 'Regalo Recibido' && !isGiftAccepted">
+            <ion-button expand="full" color="success" (click)="acceptGift()">Aceptar Regalo</ion-button>
+            <ion-button expand="full" color="danger" (click)="rejectGift()">Rechazar Regalo</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
