@@ -1,0 +1,28 @@
+{
+    "Juegos": [
+        
+            {
+                "id": 1,
+                "name": "SCOTT PILGRIM VS. THE WORLD: THE GAME COMPLETE EDITION",
+                "price": 9990
+            },    
+            {
+                "id": 2,
+                "name": "ELDEN RING",
+                "price": 38990
+
+            },
+            {
+                "id": 3,
+                "name": "Phasmophobia",
+                "price": 5990
+            },
+            {
+                "id": 4,
+                "name": "Left 4 Dead 2",
+                "price": 5750
+            }
+        
+    ]
+
+}
